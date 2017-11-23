@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import '../css/topNavigation.css';
-import SideNavigation from './sideNavigation.js';
+import SideMenu from './sideMenu/sideNavigation.js';
 
 //This component is responsible for displayingn the header and menu
 
@@ -10,7 +10,7 @@ class TopNavigation extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			openMenuToggle: false
+			isMenuOpen: false
 		}
 		this.handleLeftIconButtonTouchTap = this.handleLeftIconButtonTouchTap.bind(this);
 	}
@@ -19,7 +19,7 @@ class TopNavigation extends Component {
 	handleLeftIconButtonTouchTap() {
 			this.setState(
 				prevState => ({
-      				openMenuToggle: !prevState.openMenuToggle
+      				isMenuOpen: !prevState.isMenuOpen
       			})
     		);
 	}
@@ -28,7 +28,7 @@ class TopNavigation extends Component {
 		return (
 			<div className="top-navigation-wrapper">
 				<AppBar title={this.props.pageTitle} onLeftIconButtonTouchTap={this.handleLeftIconButtonTouchTap} />
-				<SideNavigation openMenuToggle={this.handleLeftIconButtonTouchTap} menuToggle={this.state.openMenuToggle}/>
+				<SideMenu openMenuToggle={this.handleLeftIconButtonTouchTap} isMenuOpen={this.state.isMenuOpen}/>
 			</div>
 		);
 	}
